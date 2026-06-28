@@ -12,7 +12,7 @@ LIVENESS_THRESHOLD = 3
 is_live = False
 
 cap = cv2.VideoCapture(0)
-print("Sistem basliyor. Cikmak icin q bas.")
+print("System started. Press 'q' to quit.")
 
 while True:
     ret, frame = cap.read()
@@ -53,14 +53,14 @@ while True:
                 cv2.putText(frame, f" {name}!", (50, 50),
                             cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
             else:
-                cv2.putText(frame, "Bilinmiyor", (50, 50),
+                cv2.putText(frame, "Unknown", (50, 50),
                             cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
         except Exception as e:
-            cv2.putText(frame, "Yuz analiz ediliyor...", (50, 50),
+            cv2.putText(frame, "Analyzing...", (50, 50),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
     else:
-        cv2.putText(frame, f"Goz kirpin ({blink_count}/{LIVENESS_THRESHOLD})", (50, 50),
+        cv2.putText(frame, f"Blink ({blink_count}/{LIVENESS_THRESHOLD})", (50, 50),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 165, 255), 2)
 
     cv2.imshow("Face Recognition + Liveness", frame)
