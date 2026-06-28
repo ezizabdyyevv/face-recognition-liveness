@@ -8,7 +8,7 @@ db_path = "database"
 
 blink_count = 0
 eyes_visible = False
-LIVENESS_THRESHOLD = 3
+LIVENESS = 3
 is_live = False
 
 cap = cv2.VideoCapture(0)
@@ -35,7 +35,7 @@ while True:
                 blink_count += 1
                 eyes_visible = False
 
-        if blink_count >= LIVENESS_THRESHOLD:
+        if blink_count >= LIVENESS:
             is_live = True
 
     if is_live:
@@ -60,7 +60,7 @@ while True:
             cv2.putText(frame, "Analyzing...", (50, 50),
                         cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
     else:
-        cv2.putText(frame, f"Blink ({blink_count}/{LIVENESS_THRESHOLD})", (50, 50),
+        cv2.putText(frame, f"Blink ({blink_count}/{LIVENESS})", (50, 50),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 165, 255), 2)
 
     cv2.imshow("Face Recognition + Liveness", frame)
